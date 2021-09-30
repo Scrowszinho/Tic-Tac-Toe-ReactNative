@@ -1,21 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { SafeAreaView, GameBox, BoardButton, Text } from "./src/style/Styles";
 
 export default function App() {
+  const [player, setPlayer] = useState('X');
+  const [board, setBoard] = useState([
+    [null, null, null],
+    [null, null, null],     
+    [null, null, null],
+  ]);
+
+  function handleClick(row, column) {
+    if (board[row][column] !== null) {
+      return;
+    } else {
+      board[row][column] = player;
+      setBoard(board);
+    } 
+    if (player === 'X') {
+      setPlayer('O');
+    } else {
+      setPlayer('X');
+    }
+    console.log(board, player);
+  }
+
+  
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      <GameBox>
+        <BoardButton onPress={() => handleClick(0, 0)}><Text>{board[0][0]}</Text></BoardButton>
+        <BoardButton onPress={() => handleClick(0, 1)}><Text>{board[0][1]}</Text></BoardButton>
+        <BoardButton onPress={() => handleClick(0, 2)}><Text>{board[0][2]}</Text></BoardButton>
+        <BoardButton onPress={() => handleClick(1, 0)}><Text>{board[1][0]}</Text></BoardButton>
+        <BoardButton onPress={() => handleClick(1, 1)}><Text>{board[1][1]}</Text></BoardButton>
+        <BoardButton onPress={() => handleClick(1, 2)}><Text>{board[1][2]}</Text></BoardButton>
+        <BoardButton onPress={() => handleClick(2, 0)}><Text>{board[2][0]}</Text></BoardButton>
+        <BoardButton onPress={() => handleClick(2, 1)}><Text>{board[2][1]}</Text></BoardButton>
+        <BoardButton onPress={() => handleClick(2, 2)}><Text>{board[2][2]}</Text></BoardButton>
+      </GameBox>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
