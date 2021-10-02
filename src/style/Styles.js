@@ -43,7 +43,3 @@ margin-top: 20px;
 flex-direction: row;
 `;
 
-export const ReplayButton = styled.TouchableOpacity`
-display:flex;
-justify-items: center;
-`;

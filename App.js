@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, GameBox, BoardButton, Text, GamePoints,ReplayButton } from "./src/style/Styles";
 import { Entypo, MaterialCommunityIcons  } from "@expo/vector-icons";
+import {TouchableOpacity} from 'react-native'
 export default function App() {
   const [player, setPlayer] = useState(1);
   const [winPoints, setWinPoints] = useState({ circle: 0, cross: 0 });
@@ -130,7 +131,7 @@ export default function App() {
       <Text>
         <Entypo name="cross" size={24} /> - {winPoints.cross}
       </Text>
-      <ReplayButton onPress={()=>resetGame()}><MaterialCommunityIcons  name='replay' size={35} color='#fa8231'/></ReplayButton>
+      <TouchableOpacity onPress={()=>resetGame()}><MaterialCommunityIcons  name='replay' size={35} color='#fa8231'/></TouchableOpacity>
       <Text>
         <Entypo name="circle" size={24} /> - {winPoints.circle}
       </Text>
