@@ -43,3 +43,12 @@ margin-top: 20px;
 flex-direction: row;
 `;
 
+export const PlayerRoundBox = styled.View`
+flex-direction: row;
+display: flex;
+width:298px;
+padding: 15px;
+background-color: #2a282a;
+justify-content: space-between;
+align-items: center;
+`;
